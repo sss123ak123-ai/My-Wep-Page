@@ -1,0 +1,463 @@
+/* إعادة ضبط أساسية وتطبيق Box Model من Day3.pdf صفحة 16-17 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Box Sizing من Day3.pdf صفحة 16 */
+}
+
+/* CSS Variables للألوان - مفهوم متقدم لكنه مفيد */
+:root {
+    --primary-color: #ff0000;
+    --secondary-color: #000000;
+    --accent-color: #333333;
+    --text-light: #ffffff;
+    --text-dark: #333333;
+    --bg-dark: #0a0a0a;
+    --bg-light: #f8f9fa;
+}
+
+/* تنسيقات عامة - CSS Colors من Day2.pdf صفحة 20-22 */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-light);
+    background-color: var(--bg-dark);
+    direction: rtl; /* للغة العربية */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Navigation - Position Fixed من Day3.pdf صفحة 23 */
+.navbar {
+    position: fixed; /* Fixed Positioning */
+    top: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000; /* z-index من Day3.pdf صفحة 24 */
+    transition: all 0.3s ease; /* Transition من Day3.pdf */
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-menu a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+/* Pseudo Classes من Day2.pdf صفحة 12 */
+.nav-menu a:hover {
+    color: var(--primary-color);
+}
+
+.nav-menu a:visited {
+    color: #cccccc;
+}
+
+/* Hero Section - Background Images من Day2.pdf صفحة 24-26 */
+.hero {
+    min-height: 100vh;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><rect fill="%23000" width="1000" height="1000"/><g fill="%23ff0000" opacity="0.1"><circle cx="200" cy="200" r="2"/><circle cx="400" cy="300" r="1"/><circle cx="600" cy="150" r="3"/><circle cx="800" cy="400" r="2"/><circle cx="300" cy="600" r="1"/><circle cx="700" cy="700" r="2"/></g></svg>');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Background Attachment من Day2.pdf صفحة 26 */
+    display: flex;
+    align-items: center;
+    position: relative; /* Relative Positioning من Day3.pdf صفحة 23 */
+}
+
+.hero-overlay {
+    position: absolute; /* Absolute Positioning من Day3.pdf صفحة 23 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(255,0,0,0.2) 100%);
+    z-index: 1; /* z-index من Day3.pdf صفحة 24 */
+}
+
+.hero-content {
+    position: relative; /* Relative Positioning */
+    z-index: 2; /* أعلى من الـ overlay */
+    text-align: center;
+    padding: 2rem;
+}
+
+.profile-image {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%; /* دائرية */
+    border: 5px solid var(--primary-color); /* Borders من Day2.pdf صفحة 22 */
+    margin-bottom: 2rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    transition: transform 0.3s ease; /* Transform & Transition من Day3.pdf */
+}
+
+/* Transform على الصورة عند Hover */
+.profile-image:hover {
+    transform: scale(1.05) rotate(5deg); /* Transform من Day3.pdf */
+}
+
+.hero-title {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--text-light);
+}
+
+.hero-subtitle {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.hero-description {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    line-height: 1.8;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* أزرار مع تأثيرات - Borders من Day2.pdf */
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: transparent;
+    color: var(--primary-color);
+    transform: translateY(-3px); /* Transform عند Hover */
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    transform: translateY(-3px);
+}
+
+/* Sections العامة */
+.section {
+    padding: 80px 0;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--text-light);
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: var(--primary-color);
+}
+
+.dark-section {
+    background-color: #111111;
+}
+
+/* About Section - Float Layout من Day3.pdf صفحة 25 */
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.about-image {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 3px solid var(--primary-color);
+    /* يمكن استخدام float بدلاً من flex كما في Day3.pdf */
+    /* float: right; */
+    /* margin-left: 2rem; */
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+/* Box Model Example - من Day3.pdf صفحة 8-10 */
+.stats-box {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+    justify-content: center;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 1.5rem; /* Padding من Box Model */
+    background-color: rgba(255, 0, 0, 0.1);
+    border: 2px solid var(--primary-color); /* Border من Box Model */
+    border-radius: 10px;
+    margin: 0.5rem; /* Margin من Box Model */
+    transition: transform 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-5px);
+}
+
+.stat-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #cccccc;
+}
+
+/* Skills Grid */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.skill-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid rgba(255, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary-color);
+    box-shadow: 0 10px 30px rgba(255, 0, 0, 0.2);
+}
+
+.skill-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.skill-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+/* Projects Grid */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    height: 250px;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+    transform: scale(1.05);
+}
+
+.project-image {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, var(--bg-dark) 0%, var(--primary-color) 100%);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.project-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 1.5rem;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-overlay {
+    transform: translateY(0);
+}
+
+/* Contact Section */
+.contact-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.contact-item:hover {
+    border-color: var(--primary-color);
+    transform: translateX(10px);
+}
+
+.contact-icon {
+    font-size: 2rem;
+}
+
+.contact-item h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.contact-item a {
+    color: var(--text-light);
+    text-decoration: none;
+}
+
+/* Attribute Selector من Day2.pdf صفحة 10-11 */
+a[href^="mailto:"] {
+    color: var(--primary-color) !important;
+}
+
+a[target="_blank"]::after {
+    content: " ↗";
+    font-size: 0.8em;
+}
+
+/* Footer */
+.footer {
+    background-color: #000000;
+    text-align: center;
+    padding: 2rem;
+    border-top: 1px solid #333;
+}
+
+.footer p {
+    margin-bottom: 0.5rem;
+    color: #999;
+}
+
+/* تأثيرات إضافية للحركة */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.section {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+/* استعلامات الوسائط للهواتف */
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none; /* يمكن تطوير قائمة هامبرغر لاحقاً */
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .about-content {
+        flex-direction: column;
+    }
+    
+    .stats-box {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+}
